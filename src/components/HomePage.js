@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 // API
-import fetchCountriesData from '../api/countries';
+import {fetchCountriesData} from '@/api/countries';
 // components
 import CountryCard from "./CountryCard";
 // utils
@@ -32,10 +32,10 @@ const HomePage = () => {
         if (!searchTerm && !selectedRegion) {
             return countries;
         }
-        if(!searchTerm && selectedRegion) {
+        if (!searchTerm && selectedRegion) {
             return countries.filter((country) => {
                 const region = country.region.toLowerCase();
-                return  (region === selectedRegion);
+                return (region === selectedRegion);
             });
         }
         return countries.filter((country) => {
@@ -64,31 +64,31 @@ const HomePage = () => {
     const sortedCountries = sortCountries(filteredCountries, sortBy);
 
     return (
-     <div className={styles['country-home']}>
-         <div>
-             <input
-                 type="text"
-                 placeholder="Search for a country..."
-                 value={searchTerm}
-                 onChange={(e) => setSearchTerm(e.target.value)}
-             />
-             <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
-                 <option value="">Filter by Region</option>
-                 {regions.map((region) => (
-                     <option key={region} value={region.toLowerCase()}>{region}</option>
-                 ))}
-             </select>
-             <select value={sortBy} onChange={handleSort}>
-                 <option value="">Sort by</option>
-                 <option value="population">Population</option>
-                 <option value="name">Name</option>
-             </select>
-         </div>
-         {sortedCountries && sortedCountries.map((country) => (
-             <CountryCard country={country} />
-         ))}
-     </div>
-  )
+        <div className={styles['country-home']}>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Search for a country..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
+                    <option value="">Filter by Region</option>
+                    {regions.map((region) => (
+                        <option key={region} value={region.toLowerCase()}>{region}</option>
+                    ))}
+                </select>
+                <select value={sortBy} onChange={handleSort}>
+                    <option value="">Sort by</option>
+                    <option value="population">Population</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+            {sortedCountries && sortedCountries.map((country) => (
+                <CountryCard country={country}/>
+            ))}
+        </div>
+    )
 }
 
 export default HomePage;

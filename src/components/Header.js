@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext} from 'react';
 //context
 import {ThemeContext} from "@/contexts/ThemeContext";
 //styles
@@ -7,7 +7,7 @@ import styles from '../styles/Header.module.css';
 //----------------------------------------------------------------
 
 const Header = () => {
-    const { toggleTheme } = useContext(ThemeContext);
+    const {toggleTheme} = useContext(ThemeContext);
 
     return (
         <header className={`${styles.header}`}>
