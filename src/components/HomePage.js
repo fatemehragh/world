@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 // API
-import fetchCountriesData from '../api/countries';
+import {fetchCountriesData} from '@/api/countries';
 // components
 import CountryCard from "./CountryCard";
 // utils
@@ -9,7 +9,14 @@ import {fuzzySearch} from "@/utils/Search";
 import {regions} from "@/constants/constants";
 // styles
 import styles from '../styles/Home.module.css';
+//Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faSearch
+} from "@fortawesome/free-solid-svg-icons";
+import {ThemeContext} from "@/contexts/ThemeContext";
 
+//----------------------------------------------------------------
 
 
 const HomePage = () => {
@@ -17,6 +24,18 @@ const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedRegion, setSelectedRegion] = useState('');
     const [sortBy, setSortBy] = useState('');
+
+    const {theme, toggleTheme} = useContext(ThemeContext);
+
+    const headerStyle = {
+        backgroundColor: theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
+        color: theme === 'dark' ? 'var(--white)' : 'var(--very-dark-blue-light-text)',
+    };
+
+    const inputStyle = {
+        backgroundColor: theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
+        placeholdercolor: theme === 'dark' ? 'var(--white)' : 'var(--dark-gray)',
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,10 +50,10 @@ const HomePage = () => {
         if (!searchTerm && !selectedRegion) {
             return countries;
         }
-        if(!searchTerm && selectedRegion) {
+        if (!searchTerm && selectedRegion) {
             return countries.filter((country) => {
                 const region = country.region.toLowerCase();
-                return  (region === selectedRegion);
+                return (region === selectedRegion);
             });
         }
         return countries.filter((country) => {
@@ -63,31 +82,40 @@ const HomePage = () => {
     const sortedCountries = sortCountries(filteredCountries, sortBy);
 
     return (
-     <div className={styles['country-home']}>
-         <div>
-             <input
-                 type="text"
-                 placeholder="Search for a country..."
-                 value={searchTerm}
-                 onChange={(e) => setSearchTerm(e.target.value)}
-             />
-             <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
-                 <option value="">Filter by Region</option>
-                 {regions.map((region) => (
-                     <option key={region} value={region.toLowerCase()}>{region}</option>
-                 ))}
-             </select>
-             <select value={sortBy} onChange={handleSort}>
-                 <option value="">Sort by</option>
-                 <option value="population">Population</option>
-                 <option value="name">Name</option>
-             </select>
-         </div>
-         {sortedCountries && sortedCountries.map((country) => (
-             <CountryCard country={country} />
-         ))}
-     </div>
-  )
+        <div className={styles['country-home']}>
+            <div className={styles['search-container']}>
+                <div className={styles['search-input-container']}>
+                    <FontAwesomeIcon icon={faSearch} className={styles['search-icon']} style={headerStyle}/>
+                    <input
+                        style={inputStyle}
+                        type="text"
+                        placeholder="Search for a country..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className={styles['search-input']}
+                    />
+                </div>
+                <div className={styles['select-container']}>
+                    <select style={headerStyle} value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)} className={styles['select']}>
+                        <option value="">Filter by Region</option>
+                        {regions.map((region) => (
+                            <option key={region} value={region.toLowerCase()}>{region}</option>
+                        ))}
+                    </select>
+                    <select style={headerStyle} value={sortBy} onChange={handleSort} className={styles['select']}>
+                        <option value="">Sort by</option>
+                        <option value="population">Population</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+            </div>
+            <div className={styles['country-card-container']}>
+                {sortedCountries && sortedCountries.map((country) => (
+                    <CountryCard country={country} key={country.alpha3Code}/>
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default HomePage;
