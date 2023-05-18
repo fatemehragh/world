@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import ReactGA from 'react-ga';
 // next
 import Head from "next/head";
 // context
@@ -14,15 +17,19 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 
 function MyApp({ Component, pageProps }) {
+    const router = useRouter();
+
+    useEffect(() => {
+        ReactGA.initialize('G-DWD24940EJ');
+        ReactGA.pageview(router.pathname + router.asPath);
+    }, [router.pathname]);
+
+
     return (
         <ThemeProvider>
             <Head>
                 <title>The World</title>
                 <meta name="description" content="Explore the world" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Poppins:wght@500&display=swap"
-                    rel="stylesheet"
-                />
             </Head>
             <Header />
             <main style={{margin:'50px 50px'}}>
