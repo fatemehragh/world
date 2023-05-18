@@ -1,8 +1,12 @@
 import React, {useContext} from 'react';
+// next
+import Image from 'next/image';
 //context
-import {ThemeContext} from "../contexts/ThemeContext";
+import {ThemeContext} from "@/contexts/ThemeContext";
 //styles
 import styles from '../styles/CountryCard.module.css';
+
+//----------------------------------------------------------------
 
 const CountryCard = (props) => {
     const country = props.country;
@@ -16,7 +20,7 @@ const CountryCard = (props) => {
     return (
         <div className={styles['country-card-container']} style={cardStyle}>
             <div>
-                <img src={country.flags['svg']} alt={country.flags['alt']}/>
+                <Image src={country.flags['svg']} alt={country.flags['alt']} width={150} height={100} />
             </div>
             <div>
                 <div className={styles['country-card-name']}>

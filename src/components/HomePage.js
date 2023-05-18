@@ -10,6 +10,7 @@ import {regions} from "@/constants/constants";
 // styles
 import styles from '../styles/Home.module.css';
 
+//----------------------------------------------------------------
 
 
 const HomePage = () => {
