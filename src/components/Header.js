@@ -3,9 +3,11 @@ import {useContext} from 'react';
 import {ThemeContext} from "@/contexts/ThemeContext";
 //styles
 import styles from '../styles/Header.module.css';
-
-
-
+//Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faMoon
+} from "@fortawesome/free-solid-svg-icons";
 //----------------------------------------------------------------
 
 const Header = () => {
@@ -19,10 +21,14 @@ const Header = () => {
     return (
         <header className={`${styles.header} shadow`} style={headerStyle}>
       <span style={{fontWeight: '800'}}>
-        Where in the world?
+        Where in the world ?
       </span>
             <button onClick={toggleTheme} style={headerStyle}>
-                {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                <FontAwesomeIcon
+                    icon={faMoon}
+                    style={headerStyle}
+                />
+                {theme === 'dark' ? '  Dark Mode' : '  Light Mode'}
             </button>
         </header>
     );

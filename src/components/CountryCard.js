@@ -28,7 +28,7 @@ const CountryCard = (props) => {
                         <div className={styles['country-card-name']}>
                             {country.name.common}
                         </div>
-                        <div><span>Population: </span> <span>{country['population'].toLocaleString()}</span></div>
+                        <div><span>Population:</span> <span>{country['population'].toLocaleString()}</span></div>
                         <div><span>Region: </span><span>{country['region']}</span></div>
                         <div><span>capital: </span> <span>{country['capital']}</span></div>
                     </div>

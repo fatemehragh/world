@@ -1,6 +1,61 @@
 .country-home {
-    padding: 50px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container {
+    width: 100%;
+    margin: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input-container {
+    position: relative;
+}
+
+.search-input {
+    padding: 10px 40px 10px 30px;
+    border: none !important;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #333;
+}
+
+.select-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+
+.select {
+    padding: 15px 20px;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.country-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: space-around;
+    gap: 30px;
 }

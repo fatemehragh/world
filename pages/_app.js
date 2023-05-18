@@ -6,6 +6,12 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Header from "../src/components/Header";
 // styles
 import "../src/styles/globals.css";
+// Fontawesome
+import '@fortawesome/fontawesome-svg-core/styles.css';
+// import the icons you need
+
+//----------------------------------------------------------------
+
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -13,9 +19,13 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <title>The World</title>
                 <meta name="description" content="Explore the world" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Poppins:wght@500&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
             <Header />
-            <main>
+            <main style={{margin:'50px 50px'}}>
                 <Component {...pageProps} />
             </main>
         </ThemeProvider>

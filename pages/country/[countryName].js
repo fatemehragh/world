@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useContext, useEffect, useState} from 'react';
 // Next
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -6,6 +6,16 @@ import Image from 'next/image';
 import {fetchCountryDetails, fetchCountryFullName} from '@/api/countries';
 // Components
 import {Loading} from "@/components/Loading";
+// Styles
+import styles from '../../src/styles/CountryPage.module.css';
+// Context
+import {ThemeContext} from "@/contexts/ThemeContext";
+//Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faArrowLeft, faMoon
+} from "@fortawesome/free-solid-svg-icons";
+
 
 //----------------------------------------------------------------
 
@@ -14,6 +24,17 @@ const CountryPage = () => {
     const { countryName } = router.query;
     const [country, setCountry] = useState(null);
     const [borderNames, setBorderNames] = useState([]);
+
+    const { theme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.body.classList.remove("light", "dark");
+        document.body.classList.add(theme);
+    }, [theme]);
+
+    const themeStyle = {
+        color: theme === 'dark' ? 'var(--very-light-gray)' : 'var(--very-dark-blue-light-text)',
+    };
 
     useEffect(() => {
         const fetchCountry = async () => {
@@ -75,38 +96,66 @@ const CountryPage = () => {
         return currencies.map((currency) => currency.name);
     };
 
-console.log(country)
-    return (
-        <>
-            <button onClick={handleBackClick}>Back</button>
 
-            <div>
-                <Image
-                    src={country.flags['svg']}
-                    alt={country.flags['alt']}
-                    width={150}
-                    height={100}
-                />
-            </div>
-            <h1>{country.name.common}</h1>
-            <div>Native Name: {getNativeName(country.name.nativeName)}</div>
-            <div>Population: {country['population'].toLocaleString()}</div>
-            <div>Region: {country.region}</div>
-            <div>Sub Region: {country.subregion}</div>
-            <div>Capital: {country.capital}</div>
-            <div>Top Level Domain: {country.tld}</div>
-            <div>Currencies: {getCurrencies(country.currencies)}</div>
-            <div>Languages: {getLanguages(country.languages)}</div>
-            <div>border countries:</div>
-            <ul>
-                {country.borders && country.borders.map((border, index) => (
-                    <li key={border}>
-                        <button onClick={() => handleBorderClick(border, borderNames[index])}>
+    const getBorderCountries = () => {
+        if (borderNames.length === 0) {
+            return <div>No border countries found.</div>;
+        }
+
+        return (
+            <div className={styles['border-countries']}>
+                <h3>Border Countries:</h3>
+                <div className={styles['buttons']}>
+                    {country.borders.map((border, index) => (
+                        <button style={themeStyle} className={styles['back-button']} key={border} onClick={() => handleBorderClick(border, borderNames[index])}>
                             {borderNames[index]}
                         </button>
-                    </li>
-                ))}
-            </ul>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+    return (
+        <>
+            <button style={themeStyle} className={styles['back-button']} onClick={handleBackClick}>
+                <FontAwesomeIcon
+                    icon={faArrowLeft}
+                />
+                <span>
+                    Back
+                </span>
+
+            </button>
+
+            <div className={styles['country-detail-container']}>
+                <div className={styles['image-container']} >
+                    <Image
+                        src={country.flags['svg']}
+                        alt={country.flags['alt']}
+                        width={450}
+                        height={370}
+                    />
+                </div>
+                <div style={themeStyle} className={styles['details-container']} >
+                    <h1>{country.name.common}</h1>
+                    <div className={styles['details-wrapper']}>
+                        <div className={styles['details-column']}>
+                            <div><span>Native Name:</span> <span>{getNativeName(country.name.nativeName)}</span></div>
+                            <div><span>Population:</span> <span>{country['population'].toLocaleString()}</span></div>
+                            <div><span>Region:</span><span>{country.region}</span> </div>
+                            <div><span>Sub Region:</span> <span>{country.subregion}</span></div>
+                            <div><span>Capital:</span> <span>{country.capital}</span></div>
+                        </div>
+                        <div className={styles['details-column']}>
+                            <div><span>Top Level Domain:</span><span>{country.tld}</span> </div>
+                            <div><span>Currencies:</span> <span>{getCurrencies(country.currencies)}</span></div>
+                            <div><span>Languages:</span> <span>{getLanguages(country.languages)}</span></div>
+                        </div>
+                    </div>
+                        {getBorderCountries()}
+                </div>
+
+            </div>
         </>
     );
 };
