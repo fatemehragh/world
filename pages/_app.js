@@ -13,10 +13,6 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <title>The World</title>
                 <meta name="description" content="Explore the world" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Poppins:wght@500&display=swap"
-                    rel="stylesheet"
-                />
             </Head>
             <Header />
             <main>

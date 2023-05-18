@@ -32,7 +32,9 @@ const CountryPage = () => {
                 const names = await Promise.all(
                     country.borders.map(async (border) => {
                         const response = await fetchCountryFullName(border);
+                        console.log(response)
                         return response[0].name.common;
+
                     })
                 );
                 setBorderNames(names);
@@ -73,7 +75,7 @@ const CountryPage = () => {
         return currencies.map((currency) => currency.name);
     };
 
-
+console.log(country)
     return (
         <>
             <button onClick={handleBackClick}>Back</button>

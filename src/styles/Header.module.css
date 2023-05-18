@@ -20,3 +20,11 @@
     transition: color 0.2s ease-in-out;
 }
 
+@media (max-width: 460px) {
+    .header span {
+        font-size: 1.2rem;
+    }
+    .header button {
+        font-size: 0.9rem;
+    }
+}

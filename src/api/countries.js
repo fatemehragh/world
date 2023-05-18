@@ -20,7 +20,7 @@ export const fetchCountriesData = async () => {
 
 export const fetchCountryDetails  = async (name) => {
     try {
-        const response = await axios.get(`${COUNTRIES_API_URL}/name/${name}`);
+        const response = await axios.get(`${COUNTRIES_API_URL}/name/${name}?fullText=true`);
         return response.data;
     } catch (error) {
         console.error('Error fetching countries data:', error);
