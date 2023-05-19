@@ -33,6 +33,7 @@ const CountryPage = () => {
     }, [theme]);
 
     const themeStyle = {
+        backgroundColor: theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
         color: theme === 'dark' ? 'var(--very-light-gray)' : 'var(--very-dark-blue-light-text)',
     };
 
@@ -104,7 +105,7 @@ const CountryPage = () => {
 
         return (
             <div className={styles['border-countries']}>
-                <h3>Border Countries:</h3>
+                <div><span>Border Countries:</span></div>
                 <div className={styles['buttons']}>
                     {country.borders.map((border, index) => (
                         <button style={themeStyle} className={styles['back-button']} key={border} onClick={() => handleBorderClick(border, borderNames[index])}>
@@ -117,27 +118,31 @@ const CountryPage = () => {
     };
     return (
         <>
-            <button style={themeStyle} className={styles['back-button']} onClick={handleBackClick}>
-                <FontAwesomeIcon
-                    icon={faArrowLeft}
-                />
-                <span>
+            <div className={styles['back-button-container']}>
+                <button style={themeStyle} className={styles['back-button']} onClick={handleBackClick}>
+                    <FontAwesomeIcon
+                        icon={faArrowLeft}
+                    />
+                    <span>
                     Back
                 </span>
 
-            </button>
+                </button>
+            </div>
 
             <div className={styles['country-detail-container']}>
-                <div className={styles['image-container']} >
-                    <Image
-                        src={country.flags['svg']}
-                        alt={country.flags['alt']}
-                        width={450}
-                        height={370}
-                    />
+                <div className={styles['image-container']}>
+                    <div className={styles['image-wrapper']}>
+                        <Image
+                            src={country.flags['svg']}
+                            alt={country.flags['alt']}
+                            layout="fill"
+                            objectFit="cover"
+                        />
+                    </div>
                 </div>
                 <div style={themeStyle} className={styles['details-container']} >
-                    <h1>{country.name.common}</h1>
+                    <h2>{country.name.common}</h2>
                     <div className={styles['details-wrapper']}>
                         <div className={styles['details-column']}>
                             <div><span>Native Name:</span> <span>{getNativeName(country.name.nativeName)}</span></div>

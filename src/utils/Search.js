@@ -8,9 +8,10 @@ export function fuzzySearch(searchTerm, text) {
             if (currentIndex === searchChars.length) {
                 return true;
             }
+        } else {
+            currentIndex = 0; // Reset the index if characters don't match consecutively
         }
     }
 
     return false;
 }
-

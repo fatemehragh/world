@@ -22,7 +22,7 @@ const CountryCard = (props) => {
         <Link href={`/country/${country.name.common}`}>
                 <div className={styles['country-card-container']} style={cardStyle}>
                     <div>
-                        <Image src={country.flags['svg']} alt={country.flags['alt']} width={150} height={100}/>
+                        <Image src={country.flags['svg']} alt={country.flags['alt']} width={350} height={400}/>
                     </div>
                     <div>
                         <div className={styles['country-card-name']}>
