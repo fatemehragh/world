@@ -110,7 +110,6 @@ const HomePage = () => {
                     <FontAwesomeIcon
                         icon={faSearch}
                         className={styles['search-icon']}
-                        style={`var(--background-color)`}
                     />
                     <input
                         type="text"
