@@ -25,14 +25,6 @@ const CountryPage = () => {
     const [country, setCountry] = useState(null);
     const [borderNames, setBorderNames] = useState([]);
 
-    const { theme } = useContext(ThemeContext);
-
-    useEffect(() => {
-        document.body.classList.remove("light", "dark");
-        document.body.classList.add(theme);
-    }, [theme]);
-
-
     useEffect(() => {
         const fetchCountry = async () => {
             const data = await fetchCountryDetails(countryName);
