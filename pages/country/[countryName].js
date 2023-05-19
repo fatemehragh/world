@@ -117,7 +117,7 @@ const CountryPage = () => {
         );
     };
     return (
-        <>
+        <div style={{margin: '50px 70px'}}>
             <div className={styles['back-button-container']}>
                 <button style={themeStyle} className={styles['back-button']} onClick={handleBackClick}>
                     <FontAwesomeIcon
@@ -161,7 +161,7 @@ const CountryPage = () => {
                 </div>
 
             </div>
-        </>
+        </div>
     );
 };
 

@@ -21,8 +21,8 @@ const CountryCard = (props) => {
     return (
         <Link href={`/country/${country.name.common}`}>
                 <div className={styles['country-card-container']} style={cardStyle}>
-                    <div>
-                        <Image src={country.flags['svg']} alt={country.flags['alt']} width={350} height={400}/>
+                    <div className={styles['country-card-image-container']}>
+                        <Image src={country.flags['svg']} alt={country.flags['alt']} width={350} height={300}/>
                     </div>
                     <div>
                         <div className={styles['country-card-name']}>
