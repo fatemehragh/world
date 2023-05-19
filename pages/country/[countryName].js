@@ -54,7 +54,6 @@ const CountryPage = () => {
                 const names = await Promise.all(
                     country.borders.map(async (border) => {
                         const response = await fetchCountryFullName(border);
-                        console.log(response)
                         return response[0].name.common;
 
                     })
@@ -72,6 +71,7 @@ const CountryPage = () => {
         return <Loading/>;
     }
 
+    // routers
     const handleBackClick = () => {
         router.back();
     };
@@ -80,7 +80,7 @@ const CountryPage = () => {
         router.push(`/country/${border}`, `/country/${fullName}`);
     };
 
-    //helper functions
+    //Helper functions
 
     const getNativeName = (nativeName) => {
         const keys = Object.keys(nativeName);

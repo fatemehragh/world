@@ -4,6 +4,8 @@ import HomePage from "../src/components/HomePage";
 // contexts
 import { ThemeContext } from "@/contexts/ThemeContext";
 
+//----------------------------------------------------------------
+
 export default function Home() {
     const { theme } = useContext(ThemeContext);
 

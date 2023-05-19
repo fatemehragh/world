@@ -11,7 +11,6 @@ import Header from "../src/components/Header";
 import "../src/styles/globals.css";
 // Fontawesome
 import '@fortawesome/fontawesome-svg-core/styles.css';
-// import the icons you need
 
 //----------------------------------------------------------------
 
