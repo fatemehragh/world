@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 // API
 import { fetchCountriesData } from '@/api/countries';
@@ -13,7 +13,6 @@ import styles from '../styles/Home.module.css';
 //Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { ThemeContext } from '@/contexts/ThemeContext';
 
 //----------------------------------------------------------------
 
@@ -22,24 +21,6 @@ const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedRegion, setSelectedRegion] = useState('');
     const [sortBy, setSortBy] = useState('');
-
-    const { theme } = useContext(ThemeContext);
-
-    const headerStyle = {
-        backgroundColor:
-            theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
-        color:
-            theme === 'dark'
-                ? 'var(--white)'
-                : 'var(--very-dark-blue-light-text)',
-    };
-
-    const inputStyle = {
-        backgroundColor:
-            theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
-        placeholdercolor:
-            theme === 'dark' ? 'var(--white)' : 'var(--dark-gray)',
-    };
 
     const router = useRouter();
 
@@ -129,10 +110,9 @@ const HomePage = () => {
                     <FontAwesomeIcon
                         icon={faSearch}
                         className={styles['search-icon']}
-                        style={headerStyle}
+                        style={`var(--background-color)`}
                     />
                     <input
-                        style={inputStyle}
                         type="text"
                         placeholder="Search for a country..."
                         value={searchTerm}
@@ -142,7 +122,6 @@ const HomePage = () => {
                 </div>
                 <div className={styles['select-container']}>
                     <select
-                        style={headerStyle}
                         value={selectedRegion}
                         onChange={(e) => setSelectedRegion(e.target.value)}
                         className={styles['select']}
@@ -155,7 +134,6 @@ const HomePage = () => {
                         ))}
                     </select>
                     <select
-                        style={headerStyle}
                         value={sortBy}
                         onChange={handleSort}
                         className={styles['select']}

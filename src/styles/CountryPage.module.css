@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: transparent !important;
+    color: var(--text-color);
 }
 
 .details-container h2 {
@@ -73,6 +73,8 @@
 }
 
 .back-button {
+    background-color: var(--background-color-lighter);
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     width: 100px;

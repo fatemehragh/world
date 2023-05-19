@@ -1,9 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 // next
 import Image from 'next/image';
 import Link from 'next/link';
-//context
-import {ThemeContext} from "@/contexts/ThemeContext";
 //styles
 import styles from '../styles/CountryCard.module.css';
 
@@ -11,16 +9,10 @@ import styles from '../styles/CountryCard.module.css';
 
 const CountryCard = (props) => {
     const country = props.country;
-    const {theme} = useContext(ThemeContext);
-
-    const cardStyle = {
-        backgroundColor: theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
-        color: theme === 'dark' ? 'var(--white)' : 'var(--very-dark-blue-light-text)',
-    };
 
     return (
         <Link href={`/country/${country.name.common}`}>
-                <div className={styles['country-card-container']} style={cardStyle}>
+                <div className={styles['country-card-container']}>
                     <div className={styles['country-card-image-container']}>
                         <Image src={country.flags['svg']} alt={country.flags['alt']} width={350} height={300}/>
                     </div>
