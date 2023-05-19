@@ -16,6 +16,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 
 
-## Deploied on Liara 
+## Deployed on Liara 
 http://world.iran.liara.run
 
