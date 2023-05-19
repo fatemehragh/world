@@ -138,3 +138,8 @@
         max-width: 100%;
     }
 }
+@media (max-width: 450px) {
+    .country-detail-container {
+        width: max-content;
+    }
+}

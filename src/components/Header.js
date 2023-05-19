@@ -24,7 +24,7 @@ const Header = () => {
         <header className={`${styles.header} shadow`} style={headerStyle}>
             <Link href="/">
                 <span style={{fontWeight: '800'}}>
-        Where in the world ?
+        Where in the world?
       </span>
             </Link>
             <button onClick={toggleTheme} style={headerStyle}>
