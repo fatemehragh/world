@@ -12,11 +12,13 @@ export const ThemeProvider = ({ children }) => {
         }
     }, []);
 
+
     const toggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light");
+        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
     };
 
     useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
         window.localStorage.setItem("theme", theme);
     }, [theme]);
 

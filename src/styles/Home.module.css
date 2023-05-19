@@ -20,6 +20,8 @@
 }
 
 .search-input {
+    background-color: var(--background-color-lighter);
+    color: var(--text-color);
     padding: 15px 40px 15px 50px;
     border: none !important;
     border-radius: 5px;
@@ -45,6 +47,8 @@
 }
 
 .select {
+    background-color: var(--background-color-lighter);
+    color: var(--text-color);
     padding: 15px 20px;
     border: none;
     font-size: 14px;

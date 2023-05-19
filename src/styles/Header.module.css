@@ -1,4 +1,6 @@
 .header {
+    background-color: var(--background-color-lighter);
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,6 +14,7 @@
 }
 
 .header button {
+    color: var(--text-color);
     background-color: transparent;
     border: none;
     cursor: pointer;

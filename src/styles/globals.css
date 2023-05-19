@@ -5,6 +5,15 @@
   --dark-gray: hsl(0, 0%, 52%);
   --very-light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
+
+  --background-color: var(--very-light-gray);
+  --background-color-lighter: var(--white);
+  --text-color: var(--very-dark-blue-light-text);
+}
+[data-theme="dark"] {
+  --background-color: var(--very-dark-blue);
+  --background-color-lighter: var(--dark-blue);
+  --text-color: var(--very-light-gray);
 }
 * {
   box-sizing: border-box;
@@ -14,6 +23,7 @@
 
 html,
 body {
+  background-color: var(--background-color);
   max-width: 100vw;
   font-family: 'Nunito Sans', sans-serif;
 }

@@ -25,18 +25,6 @@ const CountryPage = () => {
     const [country, setCountry] = useState(null);
     const [borderNames, setBorderNames] = useState([]);
 
-    const { theme } = useContext(ThemeContext);
-
-    useEffect(() => {
-        document.body.classList.remove("light", "dark");
-        document.body.classList.add(theme);
-    }, [theme]);
-
-    const themeStyle = {
-        backgroundColor: theme === 'dark' ? 'var(--dark-blue)' : 'var(--white)',
-        color: theme === 'dark' ? 'var(--very-light-gray)' : 'var(--very-dark-blue-light-text)',
-    };
-
     useEffect(() => {
         const fetchCountry = async () => {
             const data = await fetchCountryDetails(countryName);
@@ -110,7 +98,7 @@ const CountryPage = () => {
                 <div><span>Border Countries:</span></div>
                 <div className={styles['buttons']}>
                     {country.borders.map((border, index) => (
-                        <button style={themeStyle} className={styles['back-button']} key={border} onClick={() => handleBorderClick(border, borderNames[index])}>
+                        <button  className={styles['back-button']} key={border} onClick={() => handleBorderClick(border, borderNames[index])}>
                             {borderNames[index]}
                         </button>
                     ))}
@@ -121,7 +109,7 @@ const CountryPage = () => {
     return (
         <div style={{margin: '50px 70px'}}>
             <div className={styles['back-button-container']}>
-                <button style={themeStyle} className={styles['back-button']} onClick={handleBackClick}>
+                <button className={styles['back-button']} onClick={handleBackClick}>
                     <FontAwesomeIcon
                         icon={faArrowLeft}
                     />
@@ -143,7 +131,7 @@ const CountryPage = () => {
                         />
                     </div>
                 </div>
-                <div style={themeStyle} className={styles['details-container']} >
+                <div className={styles['details-container']} >
                     <h2>{country.name.common}</h2>
                     <div className={styles['details-wrapper']}>
                         <div className={styles['details-column']}>
