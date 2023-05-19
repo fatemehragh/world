@@ -54,7 +54,6 @@ const CountryPage = () => {
                 const names = await Promise.all(
                     country.borders.map(async (border) => {
                         const response = await fetchCountryFullName(border);
-                        console.log(response)
                         return response[0].name.common;
 
                     })
