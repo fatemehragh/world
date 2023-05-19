@@ -95,6 +95,7 @@
 .details-column {
     display: flex;
     flex-direction: column;
+    align-self: baseline;
 }
 
 .details-column > div {

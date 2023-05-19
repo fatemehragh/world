@@ -89,12 +89,14 @@ const CountryPage = () => {
     };
 
     const getLanguages = (languages) => {
-        return Object.values(languages);
+        const languageList = Object.values(languages);
+        return languageList.join(", ");
     };
 
     const getCurrencies = (currenciesList) => {
         const currencies = Object.values(currenciesList);
-        return currencies.map((currency) => currency.name);
+        const currencyNames = currencies.map((currency) => currency.name);
+        return currencyNames.join(", ");
     };
 
 
