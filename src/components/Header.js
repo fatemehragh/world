@@ -1,10 +1,12 @@
 import {useContext} from 'react';
 //context
 import {ThemeContext} from "@/contexts/ThemeContext";
+// Next
+import Link from 'next/link';
 //styles
 import styles from '../styles/Header.module.css';
 //Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faMoon
 } from "@fortawesome/free-solid-svg-icons";
@@ -20,9 +22,11 @@ const Header = () => {
 
     return (
         <header className={`${styles.header} shadow`} style={headerStyle}>
-      <span style={{fontWeight: '800'}}>
-        Where in the world ?
+            <Link href="/">
+                <span style={{fontWeight: '800'}}>
+        Where in the world?
       </span>
+            </Link>
             <button onClick={toggleTheme} style={headerStyle}>
                 <FontAwesomeIcon
                     icon={faMoon}

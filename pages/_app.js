@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
                 <meta name="description" content="Explore the world" />
             </Head>
             <Header />
-            <main style={{margin:'50px 50px'}}>
+            <main>
                 <Component {...pageProps} />
             </main>
         </ThemeProvider>

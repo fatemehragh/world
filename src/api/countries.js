@@ -12,7 +12,7 @@ export const fetchCountriesData = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching countries data:', error);
-        return null;
+        return { response: {} };
     }
 };
 
@@ -24,8 +24,7 @@ export const fetchCountryDetails  = async (name) => {
         return response.data;
     } catch (error) {
         console.error('Error fetching countries data:', error);
-        return null;
-    }
+        return { response: {} };    }
 };
 
 // Fetch country full name by code
