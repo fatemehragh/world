@@ -71,6 +71,7 @@ const CountryPage = () => {
         return <Loading/>;
     }
 
+    // routers
     const handleBackClick = () => {
         router.back();
     };
@@ -79,7 +80,7 @@ const CountryPage = () => {
         router.push(`/country/${border}`, `/country/${fullName}`);
     };
 
-    //helper functions
+    //Helper functions
 
     const getNativeName = (nativeName) => {
         const keys = Object.keys(nativeName);

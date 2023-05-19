@@ -6,7 +6,6 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState("light");
 
     useEffect(() => {
-        // Get the theme from local storage or use the default 'light' theme
         const storedTheme = window.localStorage.getItem("theme");
         if (storedTheme) {
             setTheme(storedTheme);
@@ -18,7 +17,6 @@ export const ThemeProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        // Update the theme in local storage whenever it changes
         window.localStorage.setItem("theme", theme);
     }, [theme]);
 

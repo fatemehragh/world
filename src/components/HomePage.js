@@ -23,7 +23,7 @@ const HomePage = () => {
     const [selectedRegion, setSelectedRegion] = useState('');
     const [sortBy, setSortBy] = useState('');
 
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     const headerStyle = {
         backgroundColor:

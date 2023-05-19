@@ -9,7 +9,7 @@ export function fuzzySearch(searchTerm, text) {
                 return true;
             }
         } else {
-            currentIndex = 0; // Reset the index if characters don't match consecutively
+            currentIndex = 0;
         }
     }
 
